@@ -1,0 +1,226 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: test_sanic_action
+  examples: |
+    - where can i attend test?
+
+- intent: show_all_pets
+  examples: |
+    - Show me all pets.
+    - List all available pets.
+    - What pets do you have?
+
+- intent: show_dogs
+  examples: |
+    - Show me all dogs.
+    - Show me dogs.
+    - Is there any dogs ?
+    - What dogs do you have?
+
+- intent: show_cats
+  examples: |
+    - Show me all
+    - Show me cats.
+    - Is there any cat ?
+    - What cats do you have?
+
+- intent: show_hamsters
+  examples: |
+    - Show me hamsters.
+    - Is there any hamsters ?
+    - What hamsters do you have?
+
+- intent: show_rabbits
+  examples: |
+    - Show me rabbits.
+    - Is there any rabbits ?
+    - What rabbits do you have?
+
+- intent: show_parrots
+  examples: |
+    - Show me parrots.
+    - Is there any parrots ?
+    - What parrots do you have?
+
+- intent: show_snakes
+  examples: |
+    - Show me snakes.
+    - Is there any snakes ?
+    - What snakes do you have?
+
+- intent: show_fishes
+  examples: |
+    - Show me fishes.
+    - Is there any fishes ?
+    - What fishes do you have?
+
+- intent: show_dogs_by_age
+  examples: |
+    - Show me dogs who have 2 years.
+    - Is there any dogs with 2 years old?
+    - What dogs do you have that have 2 years?
+    - Do you have that dogs but in brown color?
+    - Do you have brown one?
+    - brown?
+    - Show me brown dogs.
+
+- intent: show_cats_by_age
+  examples: |
+    - Show me cats who have 2 years.
+    - Show me cats with 2 years old?
+    - What cats do you have that have 2 years?
+
+- intent: show_pets_by_size
+  examples: |
+    - Show me large dogs.
+    - Is there any large dogs ?
+    - Show me small dogs.
+
+- intent: show_cats_by_color
+  examples: |
+    - Show me orange cat?
+    - Show me gray cat?
+    - Show me white cat?
+    - Show me orange cats?
+    - Show me gray cats?
+    - Show me white cats?
+
+- intent: show_dogs_by_color
+  examples: |
+    - Show me orange dog?
+    - Show me brown dog?
+    - Show me orange dogs?
+    - Show me brown dogs?
+
+- intent: show_fish_by_color
+  examples: |
+    - Show me blue fish?
+    - Show me gold fish?
+    - Show me silver fish?
+
+- intent: show_animals_by_price
+  examples: |
+    - show me pets which price is less than  100.
+    - show me pets which price is above  100.
+    - show me pets which price is 100.
+    - can you show me pets which price is under 100.
+
+- intent: order_pets
+  examples: |
+    - Can i order?
+    - How to order?
+    - I want to order?
+    - Is ot possible to order?
+
+- intent: explain_payment_form
+  examples: |
+    - How to fill the form?
+    - what i need to write here?
+    - I dont know how to fill the form?
+
+- intent: explain_cats_best_for_kids
+  examples: |
+    - Which cats are best for kids?
+    - What kind of cats are good for children?
+    - How do I choose a cat for my kids?
+    - Can you tell me about cats that are great with children?
+    - What should I look for in a cat if I have kids?
+
+- intent: explain_rabbits_best_for_apartment
+  examples: |
+    - Are there any rabbits suitable for apartments?
+    - What kind of rabbits are good for small spaces?
+    - How do I choose a rabbit for my apartment?
+    - Can you tell me which rabbits are good for indoor living?
+    - What is the best rabbit for an apartment environment?
+

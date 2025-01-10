@@ -1,0 +1,114 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Test action when "action test" is mentioned
+  steps:
+  - intent: test_sanic_action  
+  - action: action_hello_world  
+
+- rule: Action when "show pets" is mentioned
+  steps:
+  - intent: show_all_pets
+  - action: action_show_all_pets
+
+- rule: Action when "show cats" is mentioned
+  steps:
+  - intent: show_cats
+  - action: action_show_cats  
+
+- rule: Action when "show dogs" is mentioned
+  steps:
+  - intent: show_dogs
+  - action: action_show_dogs 
+
+- rule: Action when "show hamsters" is mentioned
+  steps:
+  - intent: show_hamsters
+  - action: action_show_hamsters
+
+- rule: Action when "show parrots" is mentioned
+  steps:
+  - intent: show_parrots
+  - action: action_show_parrots
+
+- rule: Action when "show rabbits" is mentioned
+  steps:
+  - intent: show_rabbits
+  - action: action_show_rabbits
+
+- rule: Action when "show snakes" is mentioned
+  steps:
+  - intent: show_snakes
+  - action: action_show_snakes
+
+- rule: Action when "show fishes" is mentioned
+  steps:
+  - intent: show_fishes
+  - action: action_show_fishes  
+
+- rule: Action when "show dogs by age" is mentioned
+  steps:
+  - intent: show_dogs_by_age
+  - action: action_show_dogs_by_age
+
+- rule: Action when "show cats by age" is mentioned
+  steps:
+  - intent: show_cats_by_age
+  - action: action_show_cats_by_age
+
+- rule: Action when "show pets by size" is mentioned
+  steps:
+  - intent: show_pets_by_size
+  - action: action_show_pets_by_size
+
+- rule: Action when "show cats by color" is mentioned
+  steps:
+  - intent: show_cats_by_color
+  - action: action_show_cats_by_color
+
+- rule: Action when "show dogs by color" is mentioned
+  steps:
+  - intent: show_dogs_by_color
+  - action: action_show_dogs_by_color
+
+- rule: Action when "show fish by color" is mentioned
+  steps:
+  - intent: show_fish_by_color
+  - action: action_show_fish_by_color
+
+- rule: Action when "show_animals_by_price" is mentioned
+  steps:
+  - intent: show_animals_by_price
+  - action: action_show_animals_by_price
+
+- rule: Action when "order_pets" is mentioned
+  steps:
+  - intent: order_pets
+  - action: action_order_pets
+
+- rule: Action when "explain_payment_form" is mentioned
+  steps:
+  - intent: explain_payment_form
+  - action: action_explain_payment_form
+
+- rule: Action when "explain_cats_best_for_kids" is mentioned
+  steps:
+  - intent: explain_cats_best_for_kids
+  - action: action_show_cats_best_for_kids
+
+- rule: Action when "explain_rabbits_best_for_apartment" is mentioned
+  steps:
+  - intent: explain_rabbits_best_for_apartment
+  - action: action_show_rabbits_best_for_apartment
+
