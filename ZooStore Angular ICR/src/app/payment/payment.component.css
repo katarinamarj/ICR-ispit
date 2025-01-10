@@ -1,0 +1,16 @@
+input.ng-invalid.ng-touched {
+    border-color: red;
+  }
+  
+  small {
+    color: red;
+  }
+  
+  .container {
+    margin-bottom: 7rem;
+  }
+  
+  .form-row {
+    margin-top: 2rem;
+  }
+  

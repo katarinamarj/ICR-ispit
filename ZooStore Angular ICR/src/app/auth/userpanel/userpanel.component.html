@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<mat-toolbar color="white"  style="display: flex; justify-content: space-between; padding: 10px; background-color: white;">
+  <div style="flex: 1; display: flex; align-items: center;">
+    <a href="https://www.facebook.com" target="_blank" style="margin-right: 10px; margin-left: 3%;">
+      <i class="fa fa-facebook-square" style="font-size:20px;color:	#221202d1"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" style="margin-right: 10px;">
+      <i class="fa fa-instagram" aria-hidden="true" style="font-size:20px; color:#221202d1"></i>
+    </a>
+    <a href="https://www.snapchat.com" target="_blank" style="margin-right: 10px;">
+      <i class="fa fa-pinterest" aria-hidden="true" style="font-size:20px; color:#221202d1"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" style="margin-right: 10px;">
+      <i class="fa fa-twitter-square" style="font-size:20px; color:#221202d1"></i>
+    </a>
+  </div>
+
+  <div style="flex: 1; text-align: center;">
+    <img src="https://www.zoostore.de/bilder/intern/shoplogo/zoostore-logo-300.png" alt="Logo" style="height: 50px; margin-top: 2%;  background-color: white;">
+  </div>
+
+  <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
+    <i routerLink="/cart" class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px; color:#221202d1; margin-left: 2%; margin-right: 5%;  background-color: white;"></i>
+    
+  </div>
+</mat-toolbar>
+
+<mat-toolbar color="grey" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem" style="width: 100%; height: 2.5rem; text-align: center; border-top: 1px solid rgba(192, 191, 191, 0.694); border-bottom: 1px solid  rgba(192, 191, 191, 0.694);  background-color: white;">
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem" style=" align-items: center;">
+    <i routerLink="/" target="_blank" style="font-style: normal; margin-right: 15px; margin-left: 3%; text-decoration: none; color: #221202d1; font-size: 14px;">
+      HOME
+    </i>
+    <i routerLink="/catalog" target="_blank" style="font-style: normal; margin-right: 15px; margin-left: 3%; text-decoration: none; color: #221202d1; font-size: 14px;">
+      CATALOG
+    </i>
+    <i routerLink="/review" target="_blank" style="margin-right: 15px; font-style: normal;text-decoration: none; color: #221202d1; font-size: 14px;">
+      REVIEWS
+    </i>
+  </div>
+</mat-toolbar>
+  
+  
+  
+  <div style="display: flex; justify-content: center; align-items: flex-start; padding: 20px; width: 90%; margin-left: 3%;  " fxLayout="column">
+    <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);width: 100%; align-items: center; margin-bottom: 3%;">
+      <h2>Welcome to User Panel</h2>
+      <p>Your email: {{ authService.getUserEmail() }}</p>
+      <p>Your password: {{ authService.getUserPassword() }} 
+         <a (click)="togglePasswordReset()" style="color: rgb(77, 77, 249); cursor: pointer; margin-left: 10px; text-decoration: none;">Reset password</a>
+      </p>
+      <div *ngIf="showPasswordReset">
+        <form (ngSubmit)="changePassword()" fxLayout="column">
+          <mat-form-field style="width: 300px;">
+            <input type="password" matInput placeholder="Current password" [(ngModel)]="currentPassword" name="currentPassword" required>
+          </mat-form-field>
+          <mat-form-field style="width: 300px;">
+            <input type="password" matInput placeholder="New password" [(ngModel)]="newPassword" name="newPassword" required minlength="8">
+            <mat-hint align="end">{{newPassword.length}} / 8 </mat-hint>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" style="margin-top: 10px; background-color: #4CAF50;">Change Password</button>
+        </form>
+      </div>
+  
+      <p>First Name: {{ userProfile.firstName }}</p>
+      <p>Last Name: {{ userProfile.lastName }}</p>
+      <p>Phone: {{ userProfile.phone }}</p>
+      <p>Address: {{ userProfile.address }} 
+         <a (click)="toggleAddressEdit()" style="color: blue; cursor: pointer; margin-left: 10px; text-decoration: none;">Change address</a>
+      </p>
+      <div *ngIf="showAddressEdit">
+        <form (ngSubmit)="saveProfile()" fxLayout="column">
+          <mat-form-field style="width: 300px;">
+            <input matInput placeholder="New Address" [(ngModel)]="newAddress" name="newAddress">
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" style="background-color: #4CAF50;">Change Address</button>
+        </form>
+      </div>
+  </div>
+
+  <h2>My Orders </h2>
+  <div *ngFor="let item of cartItems; let i = index" class="cart-item" style="border: 1px solid #ccc; margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+    <mat-card fxLayout="row" class="cart-item-card">
+      <img style="width: 150px; border-radius: 2%;" class="cart-item-image" [src]="item.image" alt="{{ item.name }}">
+      <div class="cart-item-details">
+        <mat-card-header>
+          <mat-card-title>{{ item.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="margin-bottom: 0px;">Type: {{ item.type }}</p>
+          <p style="margin-bottom: 0px;">Size: {{ item.size }}</p>
+          <p style="margin-bottom: 0px;">Color: {{ item.color }}</p>
+          <p style="margin-bottom: 0px;"> Order status:
+            <mat-form-field>
+              <mat-select [(value)]="item.status" (selectionChange)="updateOrderStatus(i,$event.value)">
+                <mat-option *ngFor="let status of orderStatuses" [value]="status">{{status}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>  
+          <p style="font-weight: bold; font-size: 16px;">Price ${{ item.price }}</p>
+
+          
+        </mat-card-content>
+        <mat-card-actions >
+          
+          <button mat-button color="warn" (click)="removeFromCart(i)">Remove</button>
+        </mat-card-actions>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <mat-form-field style="width: 100%;">
+          <textarea matInput placeholder="Leave a review" [(ngModel)]="reviewComments[i]" [disabled]="item.status !== 'arrived'" name="reviewComment{{i}} "></textarea>
+        </mat-form-field>
+        <button (click)="addReview(i)" mat-raised-button color="primary" style="margin-top: 110px; background-color: #c0af2f;" [disabled]="item.status !== 'arrived'">Add Review</button>
+        <p *ngIf="item.status !== 'arrived'" style="color: red; margin-top: 10px ;">Cant write review if status is not 'arrived'</p>
+      </div>
+
+
+    </mat-card>
+</div>
+
+<button mat-raised-button  (click)="clearCart()" style="margin-top: 10px; color: #ffffff; background-color: #c08f2c;">Clear Order</button>
+
+  
+

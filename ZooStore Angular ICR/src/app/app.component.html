@@ -1,0 +1,69 @@
+<div style="background-color: white; padding: 10px; display: flex; justify-content: flex-end;">
+  <nav>
+    <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; align-items: center;">
+      <li *ngIf="authService.isLoggedIn()" style="margin-right: 10px;">
+        <button mat-raised-button color="pink" routerLink="/userpanel">{{ authService.getUserEmail() }}</button>
+      </li>
+      <ng-container *ngIf="authService.isLoggedIn()">
+        <li style="margin-right: 10px;">
+          <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="!authService.isLoggedIn()">
+        <li style="margin-right: 10px;">
+          <a routerLink="/login" style="text-decoration: none; color: #555;">Login</a>
+        </li>
+        <li>
+          <a routerLink="/signup" style="text-decoration: none; color: #555;">Signup</a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="chatbot-container position-fixed bottom-0 end-0 m-3" style="width: 250px; height: 350px;">
+  <button class="btn chatbot-toggle"
+          (click)="toggleChat()"
+          title="Open Chatbot"
+          style="font-size: 18px; padding: 10px 15px;">
+    💬
+  </button>
+
+  <div *ngIf="isChatOpen" class="card chatbot-box shadow-lg" style="width: 250px; height: 350px;">
+    <div class="card-header chatbot-header d-flex justify-content-between align-items-center" style="font-size: 14px;">
+      <span>🐾 ZooStore Chatbot</span>
+      <button class="btn btn-sm btn-close" (click)="toggleChat()" style="font-size: 12px;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="card-body chatbot-body d-flex flex-column" style="overflow-y: auto; height: 75%; font-size: 12px;">
+      <div *ngFor="let message of messages; let i = index"
+           [ngClass]="{'align-self-end user-message': message.sender === 'user', 'align-self-start bot-message': message.sender === 'bot'}"
+           class="mb-2 p-2 rounded">
+        <!-- Prikazivanje poruke kao HTML sadržaja -->
+        <span [innerHTML]="message.text"></span>
+      </div>
+    </div>
+    <div class="card-footer chatbot-footer" style="font-size: 12px;">
+      <input [(ngModel)]="userInput" type="text" class="form-control mb-2" placeholder="Type your message..." (keyup.enter)="sendMessage()" style="font-size: 12px;" />
+      <button class="btn btn-primary w-100" (click)="sendMessage()" style="font-size: 12px;">Send</button>
+    </div>
+</div>
+
+
+  <!-- Webchat integracija sa Rasa serverom -->
+  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.0/dist/bundle.js"></script>
+  <script>
+    WebChat.default({
+      customData: { language: "en" },  
+      socketUrl: "http://localhost:5005", //  Rasa server URL
+      socketPath: "/socket.io/",
+      title: "ZooStore Chat",  // Naslov chat-a
+      subtitle: "How can I help you?",  // Podnaslov chat-a
+    });
+  </script>
+</div>
