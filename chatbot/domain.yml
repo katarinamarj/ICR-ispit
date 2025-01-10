@@ -1,0 +1,110 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - test_sanic_action
+  - show_all_pets
+  - show_cats
+  - show_dogs
+  - show_parrots
+  - show_hamsters
+  - show-rabbits
+  - show-fishes
+  - show-snakes
+  - show_dogs_by_age
+  - show_cats_by_age
+  - show_pets_by_size
+  - show_cats_by_color
+  - show_dogs_by_color
+  - show_fish_by_color
+  - show_animals_by_price
+  - order_pets
+  - explain_payment_form
+  - show_cats_best_for_kids
+  - show_rabbits_best_for_apartment
+
+
+actions:
+  - action_hello_world
+  - action_show_all_pets
+  - action_show_cats
+  - action_show_dogs
+  - action_show_parrots
+  - action_show_hamsters
+  - action_show_rabbits
+  - action_show_fishes
+  - action_show_snakes
+  - action_show_dogs_by_age
+  - action_show_cats_by_age
+  - action_show_pets_by_size
+  - action_show_cats_by_color
+  - action_show_dogs_by_color
+  - action_show_fish_by_color
+  - action_show_animals_by_price
+  - action_order_pets
+  - action_explain_payment_form
+  - action_show_cats_best_for_kids
+  - action_show_rabbits_best_for_apartment
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_order_pets:
+  - text: "You can order, but first you need to go on cart page, follow link"
+
+  utter_show_dogs:
+    - text: "Here are some available dogs:"
+      buttons:
+        - title: "Rex"
+          url: "http://localhost:4200/first"
+        - title: "Max"
+          url: "http://localhost:4200/second"
+        - title: "Bolt"
+          url: "http://localhost:4200/third"
+
+
+slots:
+  type:
+    type: text
+    mappings:
+      - type: from_text
+  size:
+    type: text
+    mappings:
+      - type: from_text
+  age:
+    type: text
+    mappings:
+      - type: from_text
+  name:
+    type: text
+    mappings:
+      - type: from_text
+
+    
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
